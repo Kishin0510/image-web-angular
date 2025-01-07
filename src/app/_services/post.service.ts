@@ -23,7 +23,7 @@ export class PostService {
     } catch (error) {
       console.log('Error en el servicio para obtener todos los posts', error);
       let e = error as HttpErrorResponse;
-      this.errors.push(e.message || 'Error desconocido');
+      this.errors.push(e.error.message || 'Error desconocido');
       return Promise.reject(this.errors);
     }
   }
@@ -36,8 +36,12 @@ export class PostService {
     } catch (error) {
       console.log('Error en el servicio para agregar un post', error);
       let e = error as HttpErrorResponse;
-      this.errors.push(e.message || 'Error desconocido');
+      this.errors.push(e.error.message || 'Error desconocido');
       return Promise.reject(this.errors);
     }
+  }
+
+  getErrors(): string[] {
+    return this.errors;
   }
 }

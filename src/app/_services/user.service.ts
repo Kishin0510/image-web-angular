@@ -15,14 +15,15 @@ export class UserService {
 
   private http = inject(HttpClient);
 
-  async Login(form: RegisterUser): Promise<ResponseAPILogin> {
+  async Login(form: any): Promise<ResponseAPILogin> {
     try {
       const response = await firstValueFrom(this.http.post<ResponseAPILogin>(`${this.baseURL}/auth/login`, form));
+      console.log('Respuesta del servicio de login', response);
       return Promise.resolve(response);
     } catch (error) {
       console.log('Error en el servicio de login', error);
       let e = error as HttpErrorResponse;
-      this.errors.push(e.message || 'Error desconocido');
+      this.errors.push(e.error.message || 'Error desconocido');
       return Promise.reject(this.errors);
     }
   }
@@ -34,8 +35,12 @@ export class UserService {
     } catch (error) {
       console.log('Error en el servicio de registro de usuario', error);
       let e = error as HttpErrorResponse;
-      this.errors.push(e.message || 'Error desconocido');
+      this.errors.push(e.error.message || 'Error desconocido');
       return Promise.reject(this.errors);
     }
+  }
+
+  getErrors(): string[] {
+    return this.errors;
   }
 }
