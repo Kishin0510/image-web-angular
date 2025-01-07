@@ -1,27 +1,40 @@
-# ImageWebAngular
+## Cátedra 3 - UCN 
+Para este repositorio es necesario tener instalado:
+  1. Node.js (22.11.0 mínimo).
+  2. Una IDE como Visual Studio Code.
+  3. Angular CLI (18.2.12 mínimo).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+Alumno:
 
-## Development server
+  Nicolás Patricio Tapia Carrasco
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Profesor: 
 
-## Code scaffolding
+  Jorge Rivera Mancilla
+    
+Ayudantes: 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  1. Guillermo Fuentes Ávila
+  2. Ernes Fuenzalida Tello
+    
+## Instalación
+1. Clona el repositorio en tu máquina local.
+   ```sh
+   git clone <link>
+   ```
+2. Abre el projecto en tu IDE preferida.
+3. Abre el terminal y ejecuta el siguiente comando:
+   ```sh
+   npm install
+   ```
+4. En la carpeta environment, editar el archivo environment.development.ts:
+   ```sh
+   export const environment = {
+    production: false,
+    apiUrl: '<URL de la API>'
+   };
+   ``` 
+5. Ejecuta el proyecto con el comando.
+   ```sh
+   ng serve
+   ```
