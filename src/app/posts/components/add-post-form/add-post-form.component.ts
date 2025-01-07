@@ -1,10 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PostService } from '../../../_services/post.service';
-import { ResponseAPIPost, AddPost } from '../../../_interfaces/post';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LocalStorageService } from '../../../_services/local-storage.service';
+import { ToastService } from '../../../_services/toast.service';
 
 @Component({
   selector: 'app-add-post-form',
@@ -22,6 +22,7 @@ export class AddPostFormComponent implements OnInit {
   private postService = inject(PostService);
   private localStorageService = inject(LocalStorageService);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   constructor(private fb: FormBuilder) {}
 
@@ -51,6 +52,7 @@ export class AddPostFormComponent implements OnInit {
       if (response) {
         this.error = false;
         this.errorMessage = [];
+        this.toast.succes('Post agregado correctamente');
         this.router.navigate(['/posts']);
       } else {
         this.error = true;

@@ -5,7 +5,7 @@ import { UserService } from '../../../_services/user.service';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-
+import { ToastService } from '../../../_services/toast.service';
 
 @Component({
   selector: 'app-register-form',
@@ -23,6 +23,7 @@ export class RegisterFormComponent {
 
   private userService = inject(UserService);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   constructor(private fb: FormBuilder) {
     this.registerForm();
@@ -54,6 +55,9 @@ export class RegisterFormComponent {
       }
       const response = await this.userService.RegisterUser(user);
       if (response.token) {
+        this.error = false;
+        this.errorMessage = [];
+        this.toast.succes('Usuario registrado correctamente');
         this.router.navigate(['/auth']);
       } else {
         this.error = true;

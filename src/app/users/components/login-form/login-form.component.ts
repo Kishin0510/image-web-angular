@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../../../_services/local-storage.service';
 import { UserService } from '../../../_services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastService } from '../../../_services/toast.service';
 
 @Component({
   selector: 'app-login-form',
@@ -25,6 +26,8 @@ export class LoginFormComponent {
   private userService = inject(UserService);
 
   private localStorageService = inject(LocalStorageService);
+
+  private toast = inject(ToastService);
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm();
@@ -54,6 +57,7 @@ export class LoginFormComponent {
         this.localStorageService.setVariable('token', response.token);
         this.localStorageService.setVariable('email', response.email);
         this.localStorageService.updateLoginStatus(true);
+        this.toast.succes('Bienvenido: ' + response.email);
         this.router.navigate(['/posts']);
       } else {
         this.error = true;
