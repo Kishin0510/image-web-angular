@@ -5,7 +5,7 @@
           {{ post.title }}
         </h5>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-      <strong>Fecha: </strong>{{ post.creationDate }}
+      <strong>Fecha: </strong>{{ post.creationDate | date: 'dd/MM/yyyy HH:mm' }}
     </p>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
       <strong>Usuario: </strong>{{ post.userEmail }}

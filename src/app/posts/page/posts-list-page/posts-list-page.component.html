@@ -1,4 +1,7 @@
 <div class="flex flex-wrap gap-5 px-10 justify-start ml-24 pt-5">
+  <div *ngIf="posts.length === 0" class="text-center w-full">
+    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white text-center mb-10">No hay publicaciones</h2>
+  </div>
   <app-posts-card
   *ngFor="let post of posts"
   [post]="post">

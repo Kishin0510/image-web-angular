@@ -18,6 +18,7 @@ export class AddPostFormComponent implements OnInit {
 
   error: boolean = false;
   errorMessage: string[] = [];
+  imagePreview: string | null = null;
 
   private postService = inject(PostService);
   private localStorageService = inject(LocalStorageService);
@@ -79,6 +80,7 @@ export class AddPostFormComponent implements OnInit {
         image: file
       });
 
+      this.imagePreview = URL.createObjectURL(file);
     }
   }
 

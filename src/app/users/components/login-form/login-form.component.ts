@@ -62,10 +62,16 @@ export class LoginFormComponent {
       } else {
         this.error = true;
         this.errorMessage = this.userService.getErrors();
+        this.form.patchValue({
+          password: ''
+        });
       }
     } catch (error) {
       this.error = true;
       this.errorMessage = ['Credenciales Inválidas.'];
+      this.form.patchValue({
+        password: ''
+      });
     }
   }
 
